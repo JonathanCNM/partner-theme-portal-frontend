@@ -9,6 +9,7 @@ interface ThemeVersionState {
   error: string | null;
   fetchVersions: (partnerId: string) => Promise<void>;
   compareVersions: (partnerId: string, version1Id: string, version2Id: string) => Promise<void>;
+  compareWithCurrent: (partnerId: string, versionId: string, currentTheme: any) => Promise<void>;
   restoreVersion: (partnerId: string, versionId: string) => Promise<void>;
   clearComparison: () => void;
 }
@@ -40,6 +41,48 @@ export const useThemeVersionStore = create<ThemeVersionState>((set) => ({
     } catch (error: any) {
       set({ 
         error: error.response?.data?.message || 'Failed to compare versions',
+        loading: false 
+      });
+    }
+  },
+
+  compareWithCurrent: async (partnerId: string, versionId: string, currentTheme: any) => {
+    set({ loading: true, error: null });
+    try {
+      const version = await themeVersionService.getVersion(partnerId, versionId);
+      
+      // Create comparison manually
+      const comparison: ThemeComparison = {
+        version1: {
+          id: version._id,
+          versionNumber: version.versionNumber,
+          createdAt: version.createdAt,
+        },
+        version2: {
+          id: 'current',
+          versionNumber: 0, // Current version has no version number
+          createdAt: new Date().toISOString(),
+        },
+        changes: {
+          font: {
+            old: version.theme.font,
+            new: currentTheme.font,
+          },
+          colors: {
+            old: version.theme.colors,
+            new: currentTheme.colors,
+          },
+          styles: {
+            old: version.theme.styles || {},
+            new: currentTheme.styles || {},
+          },
+        },
+      };
+      
+      set({ currentComparison: comparison, loading: false });
+    } catch (error: any) {
+      set({ 
+        error: error.response?.data?.message || 'Failed to compare with current theme',
         loading: false 
       });
     }

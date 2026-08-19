@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Sidebar } from './components/Layout/Sidebar';
 import { Dashboard } from './pages/Dashboard';
 import { Partners } from './pages/Partners';
+import { ThemeHistory } from './pages/ThemeHistory';
+import { ThemeComparer } from './pages/ThemeComparer';
 import { ThemeInitializer } from './components/common/ThemeInitializer';
 
 // Versión sin autenticación para desarrollo
@@ -17,6 +19,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/partners" element={<Partners />} />
+              <Route path="/partners/:partnerId/theme-history" element={<ThemeHistory />} />
+              <Route path="/partners/:partnerId/theme-history/compare/:version1Id/:version2Id" element={<ThemeComparer />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </div>

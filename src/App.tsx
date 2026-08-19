@@ -5,7 +5,9 @@ import { Navbar } from './components/Layout/Navbar';
 import { Sidebar } from './components/Layout/Sidebar';
 import { Dashboard } from './pages/Dashboard';
 import { Partners } from './pages/Partners';
-import { Themes } from './pages/Themes';
+import { ThemeHistory } from './pages/ThemeHistory';
+import { ThemeComparer } from './pages/ThemeComparer';
+import { ThemeInitializer } from './components/common/ThemeInitializer';
 
 const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -13,8 +15,9 @@ function App() {
   return (
     <ClerkProvider publishableKey={clerkPubKey}>
       <BrowserRouter>
+        <ThemeInitializer />
         <SignedIn>
-          <div className="min-h-screen bg-gray-50">
+          <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/30 to-purple-50/30 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 transition-colors duration-300">
             <Navbar />
             <div className="flex">
               <Sidebar />
@@ -23,7 +26,8 @@ function App() {
                   <Routes>
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/partners" element={<Partners />} />
-                    <Route path="/themes" element={<Themes />} />
+                    <Route path="/partners/:partnerId/theme-history" element={<ThemeHistory />} />
+                    <Route path="/partners/:partnerId/theme-history/compare/:version1Id/:version2Id" element={<ThemeComparer />} />
                     <Route path="*" element={<Navigate to="/" replace />} />
                   </Routes>
                 </div>
