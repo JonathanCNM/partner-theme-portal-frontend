@@ -1,0 +1,70 @@
+{
+    "font": {
+        "h1": {
+            "fontWeight": "400",
+            "min": "1.75rem",
+            "max": "2rem",
+            "lineHeight": "1"
+        },
+        "highlight": {
+            "fontWeight": "700",
+            "min": "1.75rem",
+            "max": "2rem",
+            "lineHeight": "0.95"
+        },
+        "h2": {
+            "fontWeight": "600",
+            "min": "1.25rem",
+            "max": "1.5rem",
+            "lineHeight": "1"
+        },
+        "bodycopy": {
+            "fontWeight": "500",
+            "min": "1rem",
+            "max": "1.25rem",
+            "lineHeight": "1.25rem"
+        },
+        "secondaryCta": {
+            "fontWeight": "500",
+            "min": "0.74rem",
+            "max": "1rem",
+            "lineHeight": "1"
+        },
+        "footerText": {
+            "fontWeight": "500",
+            "min": "0.85rem",
+            "max": "0.85rem",
+            "lineHeight": "1"
+        },
+        "mainButtonText": {
+            "fontWeight": "600",
+            "min": "1.15rem",
+            "max": "1.25rem",
+            "lineHeight": "2rem"
+        },
+        "step": {
+            "fontWeight": "600",
+            "min": "0.5rem",
+            "max": "0.875rem",
+            "lineHeight": "1"
+        },
+        "fontfamily": "Manrope",
+        "fontcdn": "https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+    },
+    "colors": {
+        "primaryGradient": "#4BA84B",
+        "secondaryGradient": "#008433",
+        "secondaryColor": "#252525",
+        "whiteColor": "#FFFFFF",
+        "inactived": "#979797",
+        "errorColor": "#E81C1C",
+        "partnerHighlights": "#AAFF74",
+        "gradientDeg": "116.74deg",
+        "primaryGradientPoint": "23.26%",
+        "secundaryGradientPoint": "111.43%",
+        "primaryMesh": "linear-gradient(116.74deg, #4BA84B 23.26%, #008433 111.43%)",
+        "gradient": "linear-gradient(116.74deg, #4BA84B 23.26%, #008433 111.43%)",
+        "lightness": "dark",
+        "useSystemTheme": false
+    }
+}

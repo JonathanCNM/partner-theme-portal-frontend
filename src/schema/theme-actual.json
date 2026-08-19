@@ -1,0 +1,90 @@
+{
+    "font": {
+        "h1": {
+            "fontWeight": "400",
+            "min": "1.75rem",
+            "max": "2rem",
+            "lineHeight": "1"
+        },
+        "highlight": {
+            "fontWeight": "700",
+            "min": "1.75rem",
+            "max": "2rem",
+            "lineHeight": "0.95"
+        },
+        "h2": {
+            "fontWeight": "600",
+            "min": "1rem",
+            "max": "1.15rem",
+            "lineHeight": "normal"
+        },
+        "bodycopy": {
+            "fontWeight": "400",
+            "min": "1rem",
+            "max": "1rem",
+            "lineHeight": "normal"
+        },
+        "secondaryCta": {
+            "fontWeight": "400",
+            "min": "0.74rem",
+            "max": "1rem",
+            "lineHeight": "1"
+        },
+        "footerText": {
+            "fontWeight": "400",
+            "min": "0.75rem",
+            "max": "0.75rem",
+            "lineHeight": "1"
+        },
+        "mainButtonText": {
+            "fontWeight": "600",
+            "min": "1rem",
+            "max": "1rem",
+            "lineHeight": "normal"
+        },
+        "step": {
+            "fontWeight": "600",
+            "min": "0.5rem",
+            "max": "0.875rem",
+            "lineHeight": "1"
+        },
+        "fontfamily": "Inter",
+        "fontcdn": "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    },
+    "colors": {
+        "primaryGradient": "#124734",
+        "secondaryGradient": "#124734",
+        "secondaryColor": "#212121",
+        "whiteColor": "#FFFFFF",
+        "inactived": "#D0DAD6",
+        "errorColor": "#E81C1C",
+        "partnerHighlights": "#fff",
+        "gradientDeg": "90deg",
+        "primaryGradientPoint": "0%",
+        "secundaryGradientPoint": "100%",
+        "primaryMesh": "linear-gradient(90deg, #124734 0%, #124734 100%)",
+        "errorViewBackground": "#051510",
+        "specialViewBackground": "linear-gradient(90deg, #124734 0%, #124734 100%)",
+        "cardPanelBackground": "transparent",
+        "cardBackground": "#eeeef1",
+        "cardBackgroundSecundary": "#17171c",
+        "gradient": "linear-gradient(90deg, #124734 0%, #124734 100%)",
+        "lightness": "dark",
+        "useSystemTheme": false
+    },
+    "styles": {
+        "cardBorderRadius": "16px",
+        "buttonBorderRadius": "99999px",
+        "inputBorderRadius": "8px",
+        "cardBorderColor": "#E4E4E4",
+        "inputBorderColor": "#E4E4E4",
+        "activeBorderBoton": "#1DAFA1",
+        "tamañoBordeCard": "1px",
+        "tamañoBordeInput": "1px",
+        "buttonPadding": "1rem",
+        "inputPadding": "0.75rem",
+        "cardPadding": "1.5rem",
+        "buttonSize": "medium",
+        "buttonShowIcon": false
+    }
+}
