@@ -11,7 +11,7 @@ export const Sidebar: React.FC = () => {
   ];
 
   return (
-    <aside className="w-72 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 min-h-screen border-r border-gray-200 dark:border-gray-700 shadow-sm flex flex-col transition-colors duration-300">
+    <aside className="fixed left-0 top-0 w-72 h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 border-r border-gray-200 dark:border-gray-700 shadow-sm flex flex-col transition-colors duration-300 overflow-y-auto z-10">
       <div className="p-6 flex-1">
         <Link to="/" className="block mb-8 group">
           <div className="flex items-center gap-3 px-3 py-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl shadow-lg group-hover:shadow-xl transition-all group-hover:scale-[1.02]">

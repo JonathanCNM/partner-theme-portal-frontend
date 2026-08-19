@@ -12,10 +12,11 @@ function App() {
   return (
     <BrowserRouter>
       <ThemeInitializer />
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/30 to-purple-50/30 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 flex transition-colors duration-300">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/30 to-purple-50/30 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 transition-colors duration-300">
         <Sidebar />
-        <main className="flex-1 p-8">
-          <div className="max-w-7xl mx-auto">
+        <div className="ml-72">
+          <main className="p-8">
+            <div className="max-w-7xl mx-auto">
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/partners" element={<Partners />} />
@@ -23,8 +24,9 @@ function App() {
               <Route path="/partners/:partnerId/theme-history/compare/:version1Id/:version2Id" element={<ThemeComparer />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
-          </div>
-        </main>
+            </div>
+          </main>
+        </div>
       </div>
     </BrowserRouter>
   );
