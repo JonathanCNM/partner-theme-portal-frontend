@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Partner } from '../../types/Partner';
 import { Button } from '../common/Button';
+import { themeVersionService } from '../../services/themeVersionService';
 
 interface PartnerCardProps {
   partner: Partner;
@@ -15,6 +16,8 @@ export const PartnerCard: React.FC<PartnerCardProps> = ({
   onDelete,
 }) => {
   const navigate = useNavigate();
+  const [versionCount, setVersionCount] = useState<number>(0);
+  
   const logoUrl = partner.logo?.type === 'url' 
     ? partner.logo.value 
     : partner.logo?.value 
@@ -24,15 +27,32 @@ export const PartnerCard: React.FC<PartnerCardProps> = ({
   const hasTheme = partner.theme && partner.theme.font && partner.theme.colors;
   const figmaCount = partner.figmaLinks?.length || 0;
 
+  // Obtener el conteo de versiones si el partner tiene tema
+  useEffect(() => {
+    const fetchVersionCount = async () => {
+      if (hasTheme && partner._id) {
+        try {
+          const versions = await themeVersionService.getVersions(partner._id);
+          setVersionCount(versions.length);
+        } catch (error) {
+          console.error('Error fetching version count:', error);
+          setVersionCount(0);
+        }
+      }
+    };
+    
+    fetchVersionCount();
+  }, [partner._id, hasTheme]);
+
   const handleDownloadTheme = () => {
     if (!hasTheme || !partner.theme) return;
 
-    const themeJSON = {
+    const themeJSON: any = {
       font: partner.theme.font,
       colors: partner.theme.colors,
     };
 
-    if (partner.theme.version === 'actual' && partner.theme.styles) {
+    if (partner.theme.styles) {
       themeJSON.styles = partner.theme.styles;
     }
 
@@ -210,17 +230,19 @@ export const PartnerCard: React.FC<PartnerCardProps> = ({
                     Download
                   </Button>
                 </div>
-                <Button
-                  variant="secondary"
-                  size="sm"
-                  onClick={() => navigate(`/partners/${partner._id}/theme-history`)}
-                  className="w-full !bg-gradient-to-r !from-orange-50 !to-amber-50 dark:!from-orange-900/40 dark:!to-amber-900/40 hover:!from-orange-100 hover:!to-amber-100 dark:hover:!from-orange-900/60 dark:hover:!to-amber-900/60 !text-orange-700 dark:!text-orange-200 font-semibold !border !border-orange-200 dark:!border-orange-600 hover:!border-orange-300 dark:hover:!border-orange-500"
-                >
-                  <svg className="w-4 h-4 inline-block mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-                  </svg>
-                  View History
-                </Button>
+                {versionCount > 1 && (
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    onClick={() => navigate(`/partners/${partner._id}/theme-history`)}
+                    className="w-full !bg-gradient-to-r !from-orange-50 !to-amber-50 dark:!from-orange-900/40 dark:!to-amber-900/40 hover:!from-orange-100 hover:!to-amber-100 dark:hover:!from-orange-900/60 dark:hover:!to-amber-900/60 !text-orange-700 dark:!text-orange-200 font-semibold !border !border-orange-200 dark:!border-orange-600 hover:!border-orange-300 dark:hover:!border-orange-500"
+                  >
+                    <svg className="w-4 h-4 inline-block mr-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+                    </svg>
+                    View History ({versionCount} versions)
+                  </Button>
+                )}
               </>
             )}
             <div className="flex gap-2">
